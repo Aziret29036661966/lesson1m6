@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">lesson 1 m6</string>
+    <string name="enter_word">Enter word</string>
+    <string name="_0">0</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="activity">Forward to another Activity</string>
+    <string name="emptyEdit">Поле пусто</string>
+</resources>
