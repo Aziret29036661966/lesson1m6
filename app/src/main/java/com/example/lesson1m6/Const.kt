@@ -2,8 +2,8 @@ package com.example.lesson1m6
 
 import android.widget.Toast
 
-const val ToastText = "empty field"
+const val TOAST_TEXT = "empty field"
 const val KEY_MAIN_ACTIVITY = "result"
 const val KEY_SECOND_ACTIVITY = "back"
-const val ResultCode = 78
-const val Zero = 0
+const val RESULT_CODE = 78
+const val ZERO = 0

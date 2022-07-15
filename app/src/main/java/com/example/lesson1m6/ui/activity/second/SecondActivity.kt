@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.lesson1m6.*
 import com.example.lesson1m6.databinding.ActivitySecondBinding
+import com.example.lesson1m6.ui.toastShow
 import es.dmoral.toasty.Toasty
 
 class SecondActivity : AppCompatActivity() {
@@ -31,19 +32,9 @@ class SecondActivity : AppCompatActivity() {
     private fun mainActivity() {
         binding.btnNextActivity.setOnClickListener{
             if (editTextToString().isEmpty()){
-                Toasty.custom(this, ToastText,
-                    ContextCompat.getDrawable(this, R.drawable.ic_baseline_warning_24),
-                    ContextCompat.getColor(this, android.R.color.black),
-                    ContextCompat.getColor(this, android.R.color.holo_red_light),
-                    duration, true, true).show()
-                Toasty.Config.reset()
+                toastShow(TOAST_TEXT, R.drawable.ic_baseline_warning_24, android.R.color.holo_red_light)
             }else{
-                Toasty.custom(this, editTextToString(),
-                    ContextCompat.getDrawable(this, R.drawable.ic_baseline_near_me_24),
-                    ContextCompat.getColor(this, android.R.color.black),
-                    ContextCompat.getColor(this, android.R.color.holo_green_light),
-                    duration, true, true).show()
-                Toasty.Config.reset()
+                toastShow(editTextToString(), R.drawable.ic_baseline_near_me_24, android.R.color.holo_green_light)
                 nextActivity()
             }
         }
@@ -52,7 +43,7 @@ class SecondActivity : AppCompatActivity() {
     private fun nextActivity(){
         val intent = Intent()
         intent.putExtra(KEY_SECOND_ACTIVITY, editTextToString())
-        setResult(ResultCode, intent)
+        setResult(RESULT_CODE, intent)
         super.onBackPressed()
     }
 

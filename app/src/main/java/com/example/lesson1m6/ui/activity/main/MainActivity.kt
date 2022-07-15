@@ -2,19 +2,20 @@ package com.example.lesson1m6.ui.activity.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+
 import com.example.lesson1m6.*
 import com.example.lesson1m6.databinding.ActivityMainBinding
 import com.example.lesson1m6.ui.activity.second.SecondActivity
-import es.dmoral.toasty.Toasty
+
+import com.example.lesson1m6.ui.toastShow
+
 
 class MainActivity : AppCompatActivity() {
-    private var num: Int = Zero
-    private val duration = Toast.LENGTH_SHORT
+    private var num: Int = ZERO
     private lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     private fun launcher(){
           activityResultLauncher =
               registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == ResultCode) run {
+            if (it.resultCode == RESULT_CODE) run {
                 val intent: Intent? = it.data
 
                 if (intent != null) run {
@@ -63,19 +64,9 @@ class MainActivity : AppCompatActivity() {
     private fun controlEditText(){
         binding.btnNextActivity.setOnClickListener{
             if (editTextToString().isEmpty()){
-                Toasty.custom(this, ToastText,
-                    ContextCompat.getDrawable(this, R.drawable.ic_baseline_warning_24),
-                    ContextCompat.getColor(this, android.R.color.black),
-                    ContextCompat.getColor(this, android.R.color.holo_red_light),
-                    duration, true, true).show()
-                Toasty.Config.reset()
+                toastShow(TOAST_TEXT, R.drawable.ic_baseline_warning_24, android.R.color.holo_red_light)
             }else{
-                Toasty.custom(this, editTextToString(),
-                    ContextCompat.getDrawable(this, R.drawable.ic_baseline_near_me_24),
-                    ContextCompat.getColor(this, android.R.color.black),
-                    ContextCompat.getColor(this, android.R.color.holo_green_light),
-                    duration, true, true).show()
-                Toasty.Config.reset()
+                toastShow(editTextToString(), R.drawable.ic_baseline_near_me_24, android.R.color.holo_green_light)
                 nextActivity()
             }
         }
